@@ -22,7 +22,7 @@ Using Item 1A (“Risk Factors”) sections from 10-K filings across industries 
 - Defined **Cyber Risk Ratio** as:
 
   $$
-  \text{Cyber Risk Ratio} = \frac{\text{\# Cybersecurity Sentences}}{\text{\# Total Risk Sentences in Item 1A}}
+  \text{Cyber Risk Ratio} = \frac{\text{\No. of Cybersecurity Sentences}}{\text{\No. of Total Risk Sentences in Item 1A}}
   $$
 
 - Used a relative measure to ensure comparability across firms of different sizes or verbosity levels.
