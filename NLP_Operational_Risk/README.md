@@ -1,43 +1,49 @@
-# Predicting Cybersecurity Operational Risk from 10-K Filings Using NLP
+# Cybersecurity Risk Analysis Using NLP on 10-K Filings
 
-This project applies natural language processing (NLP) techniques to extract and quantify cybersecurity-related operational risk from the "Item 1A: Risk Factors" section of SEC 10-K filings. It then evaluates how these risks vary across industries and time, and investigates their relationship with equity returns through portfolio analysis.
+This project applies Natural Language Processing (NLP) techniques to extract and quantify cybersecurity-related disclosures in SEC 10-K filings, constructing a risk measure and evaluating its financial implications through portfolio analysis.
 
 ## Overview
 
-- **Data**: 10-K Item 1A text for selected firms (1996–2023), matched with CRSP stock data.
-- **Goal**: Create a measure of cybersecurity risk and analyze its cross-sectional and temporal implications on financial performance.
+Using Item 1A (“Risk Factors”) sections from 10-K filings across industries from 1996–2022, we:
+- Extract cybersecurity-relevant sentences using rule-based NLP filters.
+- Construct a **cyber risk ratio** for each firm-year.
+- Analyze sectoral and temporal trends in cyber risk disclosure.
+- Evaluate how cybersecurity risk correlates with equity returns using equal- and value-weighted quintile portfolios.
 
-## Methodology
+## Key Steps
 
-### 1. Risk Extraction via NLP
-- Tokenized 10-K risk factor sections into sentences using `nltk`.
-- Matched sentences against curated keyword lists to identify relevant vs. irrelevant mentions of cybersecurity threats.
-- Constructed a **Cybersecurity Risk Ratio**:  
+### 1. Text Extraction
+- Tokenized sentences using `nltk`.
+- Applied keyword filtering with inclusive and exclusive rules to identify cybersecurity-relevant sentences.
+- Used JSON-based 10-K data and merged with CRSP monthly return data by `(PERMNO, year)`.
+
+### 2. Risk Measure
+- Defined **Cyber Risk Ratio** as:
+
   \[
-  \text{Cyber Risk Ratio} = \frac{\# \text{Cyber-Relevant Sentences}}{\# \text{Total Sentences in Item 1A}}
+  \text{Cyber Risk Ratio} = \frac{\# \text{Cybersecurity Sentences}}{\# \text{Total Risk Sentences in Item 1A}}
   \]
 
-### 2. Descriptive Statistics
-- Computed distributional statistics (mean, std, skewness, kurtosis) of risk scores by sector.
-- Visualized trends in cybersecurity risk across sectors and over time.
-- Found highest average risk in **Finance, Insurance & Real Estate**, with increasing emphasis post-2015.
+- Justified the use of a relative measure to ensure comparability across firms of different sizes or verbosity levels.
 
-### 3. Portfolio Construction
-- Formed **equal-weighted** and **value-weighted** portfolios by risk quintiles.
-- Compared returns of high vs. low cyber-risk firms.
-- Noted higher volatility in high-risk portfolios in early 2000s, with convergence post-2015.
+### 3. Descriptive Analysis
+- Computed mean, standard deviation, skewness, and kurtosis of cyber risk across industries and over time.
+- Found that the Finance and Wholesale Trade sectors exhibit the highest risk levels and volatility.
 
-## Key Insights
-- Finance and Wholesale Trade show the highest and most volatile cybersecurity risk.
-- High cyber-risk portfolios tend to exhibit greater return variability.
-- Market perception and pricing of cybersecurity risk appear to have matured in recent years.
+### 4. Portfolio Return Analysis
+- Constructed quintile portfolios based on firms’ cybersecurity risk.
+- Calculated and plotted **equal-weighted** and **value-weighted** return spreads between high-risk and low-risk portfolios.
+- Observed that return differentials were more pronounced before 2010, and flattened in recent years, reflecting possible market efficiency improvements.
 
 ## Files
-- `NLP_Operational_Risk_Code.ipynb`: Full implementation of text processing, risk metric creation, and portfolio analysis.
-- `NLP_Operational_Risk_Report.pdf`: Report with plots, commentary, and interpretations.
+- `NLP_Operational_Risk_Code.ipynb`: Full implementation of extraction, risk calculation, and return analysis.
+- `NLP_Operational_Risk_Report.pdf`: Report summarizing methodology, results, and insights.
 
-## Tools & Libraries
-- Python 3.8+, `nltk`, `pandas`, `matplotlib`, `numpy`, `re`, `glob`
+## Requirements
+- Python 3.8+
+- `nltk`, `pandas`, `numpy`, `matplotlib`, `glob`, `json`, `scipy`
 
-## Author
-Shiqi Hu | Georgia Tech QCF | December 2024
+## Notes
+- This project focuses solely on **cybersecurity risk** within the broader operational risk landscape.
+- Portfolio results suggest that markets may have matured in pricing cyber risk over time.
+
