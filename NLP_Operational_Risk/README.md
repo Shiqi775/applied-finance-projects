@@ -18,13 +18,15 @@ Using Item 1A (“Risk Factors”) sections from 10-K filings across industries 
 - Used JSON-based 10-K data and merged with CRSP monthly return data by `(PERMNO, year)`.
 
 ### 2. Risk Measure
+
 - Defined **Cyber Risk Ratio** as:
 
-  \[
-  \text{Cyber Risk Ratio} = \frac{\# \text{Cybersecurity Sentences}}{\# \text{Total Risk Sentences in Item 1A}}
-  \]
+  $$
+  \text{Cyber Risk Ratio} = \frac{\text{\# Cybersecurity Sentences}}{\text{\# Total Risk Sentences in Item 1A}}
+  $$
 
-- Justified the use of a relative measure to ensure comparability across firms of different sizes or verbosity levels.
+- Used a relative measure to ensure comparability across firms of different sizes or verbosity levels.
+
 
 ### 3. Descriptive Analysis
 - Computed mean, standard deviation, skewness, and kurtosis of cyber risk across industries and over time.
