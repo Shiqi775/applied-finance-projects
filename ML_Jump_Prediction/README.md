@@ -52,4 +52,3 @@ To evaluate and compare various classification algorithms—Logistic Regression,
 
 ## Acknowledgments
 - Data from CRSP and FRED (Federal Reserve Economic Data)
-- This project was developed as part of a course assignment in Applied Machine Learning in Finance.
